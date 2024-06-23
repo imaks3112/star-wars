@@ -1,0 +1,65 @@
+.wrapper{
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    column-gap: 2rem;
+
+    .filter-section {
+        .filter-panel {
+            width: 200px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .filter-panel h3 {
+            margin-top: 0;
+            color: #008060;
+        }
+        .filter-panel select,
+        .filter-panel label {
+            width: 100%;
+            margin: 5px 0;
+            display: block;
+        }
+        .filter-panel .checkbox {
+            margin: 5px 0;
+        }
+        .filter-panel button {
+            width: 100%;
+            padding: 10px;
+            background-color: #008060;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    }
+
+    .character-list{
+        .content {
+            padding-bottom: 2rem;
+            color: #008060;
+            small {
+                color: gray;
+            }
+        }
+        .table-content {
+            
+            .character-header{
+                display: grid;
+                grid-template-columns: 4rem 1fr 0.5fr 0.5fr;
+                column-gap: 1rem;
+                padding: 1rem;
+
+                .character-item {
+                    font-weight: 600;
+                }
+            }
+            
+            .data-row {
+                background-color: #ebeaea;
+                border: 2px solid white;
+            }
+        }
+    }
+}
