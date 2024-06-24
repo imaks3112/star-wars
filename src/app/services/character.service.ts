@@ -8,8 +8,8 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getAllCharacterList() {
-    const urlApi = 'https://swapi.dev/api/people';
+  getAllCharacterList(pageNumber) {
+    const urlApi = `https://swapi.dev/api/people/?page=${pageNumber}`;
 
     return this.http.get(urlApi);
   }

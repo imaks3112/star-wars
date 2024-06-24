@@ -1,67 +1,48 @@
 <div class="wrapper">
-    <div class="card">
-        <div class="card-body">
-            <div class="filter-panel">
-                <div class="filter-label">
-                    <strong>FILTERS</strong>
-                </div>
+    <form [formGroup]="filterItemForm">
+        <div class="card">
+            <div class="card-body">
+                <div class="filter-panel">
+                    <div class="filter-label">
+                        <strong>FILTERS</strong>
+                    </div>
 
-                <div class="search-content">
-                    <select class="form-select" aria-label="Default select example">
-                        <ng-container *ngFor="let movie of movieList">
-                            <option value="1">{{movie?.title}}</option>
-                        </ng-container>
-                        
-            
-                    </select>
-                </div>
-
-                <div class="search-content">
-                    <select class="form-select" aria-label="Default select example">
-                        <ng-container *ngFor="let species of speciesList">
-                            <option value="1">{{species?.name}}</option>
-                        </ng-container>
-                    </select>
-                </div>
-
-                <div class="search-content">
-                    <select class="form-select" aria-label="Default select example">
-                       
-                        <ng-container *ngFor="let vehicles of vehicleList">
-                            <option value="1">{{vehicles?.name}}</option>
-                        </ng-container>
-        
-                    </select>
-
-                </div>
-
-                <div class="search-content">
-                    <select class="form-select" aria-label="Default select example">
-                        <ng-container *ngFor="let starships of starShipsList">
-                            <option value="1">{{starships?.name}}</option>
-                        </ng-container>
-                    </select>
-                </div>
-
-                <div class="search-content">
-                    <!--Using items input-->
-
-                        <ng-select [items]="birthYearList" 
-                           
-                            appendTo="body"
-                        >
+                    <div class="search-content">
+                        <ng-select [items]="movieList" bindLabel="title" appendTo="body" formControlName="movieName">
                         </ng-select>
+                    </div>
 
+                    <div class="search-content">
 
-                  
-                </div>
+                        <ng-select [items]="speciesList" bindLabel="name" appendTo="body" formControlName="speciedName">
+                        </ng-select>
+                    </div>
 
-                <div class="search-button">
-                    <button class="btn btn-success" type="button">SEARCH</button>
+                    <div class="search-content">
+
+                        <ng-select [items]="vehicleList" bindLabel="name" appendTo="body" formControlName="vehicleName">
+                        </ng-select>
+                    </div>
+
+                    <div class="search-content">
+                        <ng-select [items]="starShipsList" bindLabel="name" appendTo="body"
+                            formControlName="starShipName">
+                        </ng-select>
+                    </div>
+
+                    <div class="search-content">
+                        <ng-select [items]="birthYearList" bindLabel="birth_year" appendTo="body"
+                            formControlName="birthYear" (clear)="clearBirthYear()">
+                        </ng-select>
+                    </div>
+
+                    <div class="search-button">
+                        <button class="btn" type="button" (click)="filterData()">SEARCH</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
     <div class="character-list">
         <div class="card">
             <div class="card-body">
@@ -97,21 +78,21 @@
                 <div class="pagination">
                     <nav aria-label="Page navigation">
                         <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" href="#">1</a></li>
-                          <li class="page-item"><a class="page-link" href="#">2</a></li>
-                          <li class="page-item"><a class="page-link" href="#">3</a></li>
-                          <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                            </a>
-                          </li>
+                            <li class="page-item">
+                                <button class="page-link" href="#" aria-label="Previous" (click)="previousClick()"
+                                    [disabled]="disablePrevButton">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </button>
+                            </li>
+
+                            <li class="page-item">
+                                <button class="page-link" href="#" aria-label="Next" (click)="nextClick()"
+                                    [disabled]="disableNextButton">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </button>
+                            </li>
                         </ul>
-                      </nav>
+                    </nav>
                 </div>
             </div>
         </div>

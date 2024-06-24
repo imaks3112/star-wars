@@ -15,14 +15,14 @@
             padding: 1rem;
         }
 
-        search-button {
-            padding: 10px;
-            background-color: #008060;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            flex-direction: column;
+        .search-button {
+            text-align: center;
+            .btn {
+                color: white;
+                cursor: pointer;
+                border: none;
+                background-color: #008060;
+            }
         }
     }
 
@@ -39,7 +39,7 @@
                 display: grid;
                 grid-template-columns: 4rem 1fr 0.5fr 0.5fr;
                 column-gap: 1rem;
-                padding: 1rem;
+                padding: 0.7rem;
 
                 .character-item {
                     font-weight: 600;
