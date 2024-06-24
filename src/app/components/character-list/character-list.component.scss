@@ -1,41 +1,32 @@
-.wrapper{
+.wrapper {
     padding: 3rem;
     display: grid;
     grid-template-columns: 20rem 1fr;
     column-gap: 2rem;
 
-    .filter-section {
-        .filter-panel {
-            width: 200px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .filter-panel h3 {
+    .filter-panel {
+        .filter-label {
             margin-top: 0;
             color: #008060;
+            text-align: center;
         }
-        .filter-panel select,
-        .filter-panel label {
-            width: 100%;
-            margin: 5px 0;
-            display: block;
+
+        .search-content {
+            padding: 1rem;
         }
-        .filter-panel .checkbox {
-            margin: 5px 0;
-        }
-        .filter-panel button {
-            width: 100%;
+
+        search-button {
             padding: 10px;
             background-color: #008060;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            flex-direction: column;
         }
     }
 
-    .character-list{
+    .character-list {
         .content {
             padding-bottom: 2rem;
             color: #008060;
@@ -44,8 +35,7 @@
             }
         }
         .table-content {
-            
-            .character-header{
+            .character-header {
                 display: grid;
                 grid-template-columns: 4rem 1fr 0.5fr 0.5fr;
                 column-gap: 1rem;
@@ -55,11 +45,21 @@
                     font-weight: 600;
                 }
             }
-            
+
             .data-row {
                 background-color: #ebeaea;
                 border: 2px solid white;
+
+                .row-item:nth-child(2) {
+                    cursor: pointer;
+                }
             }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 0.5rem;
         }
     }
 }

@@ -1,44 +1,65 @@
 <div class="wrapper">
-    <div class="filter-section">
-        <div class="filter-panel">
-            <h3>FILTERS</h3>
-            <label for="movieName">Movie Name</label>
-            <select id="movieName">
-                <option value="">Select a movie</option>
-                <!-- Add movie options here -->
-            </select>
-        
-            <label for="species">Species</label>
-            <select id="species">
-                <option value="">Select a species</option>
-                <!-- Add species options here -->
-            </select>
-        
-            <label for="vehicle">Vehicle</label>
-            <select id="vehicle">
-                <option value="">Select a vehicle</option>
-                <!-- Add vehicle options here -->
-            </select>
-        
-            <label for="starShips">Star Ships</label>
-            <select id="starShips">
-                <option value="">Select a star ship</option>
-                <!-- Add star ships options here -->
-            </select>
-        
-            <label for="birthYear">Birth Year</label>
-            <div id="birthYear">
-                <div class="checkbox">
-                    <input type="checkbox" id="all" name="birthYear" value="all">
-                    <label for="all">ALL</label>
+    <div class="card">
+        <div class="card-body">
+            <div class="filter-panel">
+                <div class="filter-label">
+                    <strong>FILTERS</strong>
                 </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="bbd20" name="birthYear" value="bbd20">
-                    <label for="bbd20">BBD20</label>
+
+                <div class="search-content">
+                    <select class="form-select" aria-label="Default select example">
+                        <ng-container *ngFor="let movie of movieList">
+                            <option value="1">{{movie?.title}}</option>
+                        </ng-container>
+                        
+            
+                    </select>
+                </div>
+
+                <div class="search-content">
+                    <select class="form-select" aria-label="Default select example">
+                        <ng-container *ngFor="let species of speciesList">
+                            <option value="1">{{species?.name}}</option>
+                        </ng-container>
+                    </select>
+                </div>
+
+                <div class="search-content">
+                    <select class="form-select" aria-label="Default select example">
+                       
+                        <ng-container *ngFor="let vehicles of vehicleList">
+                            <option value="1">{{vehicles?.name}}</option>
+                        </ng-container>
+        
+                    </select>
+
+                </div>
+
+                <div class="search-content">
+                    <select class="form-select" aria-label="Default select example">
+                        <ng-container *ngFor="let starships of starShipsList">
+                            <option value="1">{{starships?.name}}</option>
+                        </ng-container>
+                    </select>
+                </div>
+
+                <div class="search-content">
+                    <!--Using items input-->
+
+                        <ng-select [items]="birthYearList" 
+                           
+                            appendTo="body"
+                        >
+                        </ng-select>
+
+
+                  
+                </div>
+
+                <div class="search-button">
+                    <button class="btn btn-success" type="button">SEARCH</button>
                 </div>
             </div>
-        
-            <button type="button">SEARCH</button>
         </div>
     </div>
     <div class="character-list">
@@ -48,7 +69,7 @@
                     <h5>SEARCH RESULTS</h5>
                     <small>(By default this table will have all data)</small>
                 </div>
-        
+
                 <div class="table-content">
                     <div class="character-header">
                         <div class="character-item">Sl No.</div>
@@ -56,48 +77,41 @@
                         <div class="character-item">Species</div>
                         <div class="character-item">Birth Year</div>
                     </div>
-                    <div class="data-row character-header">
+
+                    <div class="data-row character-header" *ngFor="let character of characterList; index as i">
                         <div class="row-item">
-                            akshay
+                            {{i+1}}
+                        </div>
+                        <div class="row-item" (click)="showFilmDetails(character)">
+                            {{character.name}}
                         </div>
                         <div class="row-item">
-                            akshay
+                            {{character.species}}
                         </div>
                         <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                    </div>
-                    <div class="data-row character-header">
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
+                            {{character.birth_year}}
                         </div>
                     </div>
-                    <div class="data-row character-header">
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                        <div class="row-item">
-                            akshay
-                        </div>
-                    </div>
+                </div>
+
+                <div class="pagination">
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
                 </div>
             </div>
         </div>

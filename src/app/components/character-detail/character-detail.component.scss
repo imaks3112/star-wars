@@ -1,0 +1,33 @@
+.wrapper {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: 20rem 1fr;
+    column-gap: 2rem;
+
+    .left-panel {
+        .left-side-data {
+            margin-top: 0;
+            color: #008060;
+            text-align: center;
+        }
+    }
+
+    .right-side-content {
+        .card {
+            .card-body {
+                .close-button {
+                    display: flex;
+                    place-content: flex-end;
+                }
+
+                .content {
+                    color: #008060;
+                }
+
+                .same-style-section {
+                    padding: 1rem;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+<div class="wrapper">
+    <div class="card">
+        <div class="card-body">
+            <div class="left-panel">
+                <div class="left-side-data">
+                    <img [src]="base64Image" alt="Globe Icon">
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Name: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Skywalker Born: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Gender: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Height: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Wieght: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Created At: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Edited At: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Hair color: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Eye color: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Skin color: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Panet Name: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Species: </label>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="value">Akshay</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-side-content">
+        <div class="card">
+            <div class="card-body">
+                <div class="close-button">
+                    <button class="btn" (click)="onClose()">Close</button>
+                </div>
+                <div class="film-section same-style-section">
+                    <div class="content">
+                        <h5>Films</h5>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <ng-container *ngFor="let title of films?.results">
+                                {{title?.title}}
+                            </ng-container>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="vehicle-section same-style-section">
+                    <div class="content">
+                        <h5>Vehicles</h5>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            Akshay
+                        </div>
+                    </div>
+                </div>
+
+                <div class="starships-section same-style-section">
+                    <div class="content">
+                        <h5>Starships</h5>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            Akshay
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
