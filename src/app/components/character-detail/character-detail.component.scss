@@ -14,6 +14,7 @@
 
     .right-side-content {
         .card {
+            margin: 1rem 0;
             .card-body {
                 .close-button {
                     display: flex;
@@ -26,6 +27,11 @@
 
                 .same-style-section {
                     padding: 1rem;
+                }
+
+                .label-value {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
                 }
             }
         }

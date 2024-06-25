@@ -16,10 +16,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Skywalker Born: </label>
+                        <label for="">SkywalkerBorn: </label>
                     </div>
                     <div class="col-md-6">
-                        <div class="value">Akshay</div>
+                        <div class="value">{{peopleDetails?.birth_year}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -40,10 +40,10 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="">Wieght: </label>
+                        <label for="">Weight: </label>
                     </div>
                     <div class="col-md-6">
-                        <div class="value">Akshay</div>
+                        <div class="value">{{peopleDetails?.mass}}</div>
                     </div>
                 </div>
                 <div class="row">
@@ -91,7 +91,7 @@
                         <label for="">Panet Name: </label>
                     </div>
                     <div class="col-md-6">
-                        <div class="value">Akshay</div>
+                        <div class="value">Tatooine</div>
                     </div>
                 </div>
                 <div class="row">
@@ -99,7 +99,7 @@
                         <label for="">Species: </label>
                     </div>
                     <div class="col-md-6">
-                        <div class="value">Akshay</div>
+                        <div class="value">Human</div>
                     </div>
                 </div>
             </div>
@@ -116,12 +116,12 @@
                         <h5>Films</h5>
                     </div>
 
-                    <div class="card">
+                    <div class="card" *ngFor="let film of films">
                         <div class="card-body">
-                            <ng-container *ngFor="let title of films?.results">
-                                {{title?.title}}
-                            </ng-container>
-                            
+                            <div class="label-value"> <label for="">Title:</label>  <strong>{{film?.title}}</strong> </div>
+                           <div class="label-value"> <label for="">Producer:</label>  <strong>{{film?.producer}}</strong> </div>
+                           <div class="label-value"> <label for="">Director:</label>  <strong>{{film?.director}}</strong> </div>
+                           <div class="label-value"> <label for="">Release Date:</label>  <strong>{{film?.release_date}}</strong> </div>
                         </div>
                     </div>
                 </div>
@@ -131,9 +131,15 @@
                         <h5>Vehicles</h5>
                     </div>
 
-                    <div class="card">
+                    <div class="card" *ngFor="let vehicle of vehicleList">
                         <div class="card-body">
-                            Akshay
+                            <div class="label-value"> <label for="">Name:</label>  <strong>{{vehicle?.name}}</strong> </div>
+                            <div class="label-value"> <label for="">Model:</label>  <strong>{{vehicle?.model}}</strong> </div>
+                            <div class="label-value"> <label for="">Max atmosphering speed:</label>  <strong>{{vehicle?.max_atmosphering_speed}}</strong> </div>
+                            <div class="label-value"> <label for="">Passengers:</label>  <strong>{{vehicle?.passengers}}</strong> </div>
+                            <div class="label-value"> <label for="">Vehicle class:</label>  <strong>{{vehicle?.vehicle_class}}</strong> </div>
+                            <div class="label-value"> <label for="">Manufacturer:</label>  <strong>{{vehicle?.manufacturer}}</strong> </div>
+                            <div class="label-value"> <label for="">Cargo_capacity:</label>  <strong>{{vehicle?.cargo_capacity}}</strong> </div>
                         </div>
                     </div>
                 </div>
@@ -143,9 +149,15 @@
                         <h5>Starships</h5>
                     </div>
 
-                    <div class="card">
+                    <div class="card" *ngFor="let starShip of starsipList">
                         <div class="card-body">
-                            Akshay
+                            <div class="label-value"> <label for="">Name:</label>  <strong>{{starShip?.name}}</strong> </div>
+                            <div class="label-value"> <label for="">Model:</label>  <strong>{{starShip?.model}}</strong> </div>
+                            <div class="label-value"> <label for="">Starship class:</label>  <strong>{{starShip?.starship_class}}</strong> </div>
+                            <div class="label-value"> <label for="">Hyperdrive rating:</label>  <strong>{{starShip?.hyperdrive_rating}}</strong> </div>
+                            <div class="label-value"> <label for="">Crew:</label>  <strong>{{starShip?.crew}}</strong> </div>
+                            <div class="label-value"> <label for="">Consumables:</label>  <strong>{{starShip?.consumables}}</strong> </div>
+                            <div class="label-value"> <label for="">MGLT:</label>  <strong>{{starShip?.MGLT}}</strong> </div>
                         </div>
                     </div>
                 </div>

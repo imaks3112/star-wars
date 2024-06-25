@@ -82,11 +82,17 @@ export class CharacterListComponent implements OnInit {
       );
       res = await Promise.allSettled(speciesResult);
       const speciesList = res.map((ele) => ele.value);
+      
+      speciesList.forEach(e => {
+        if (this.characterService.speciesMap.has(e.url)) {
+          this.characterService.speciesMap.set(e.url, e);
+        }
+      })
+      
       this.speciesList = [...speciesList, ...this.speciesList];
     } catch (err) {
       console.log(err);
     }
-    return res.map((ele) => ele.value?.name).join(',');
   }
 
   async getAllFilms(films) {
@@ -99,6 +105,12 @@ export class CharacterListComponent implements OnInit {
       );
       res = await Promise.allSettled(filmsResult);
       const movieList = res.map((ele) => ele.value);
+      movieList.forEach(e => {
+        if (this.characterService.filmsMap.has(e.url)) {
+          this.characterService.filmsMap.set(e.url, e);
+        }
+      })
+      
       this.movieList = [...movieList, ...this.movieList];
     } catch (err) {
       console.log(err);
@@ -114,8 +126,14 @@ export class CharacterListComponent implements OnInit {
           await lastValueFrom(this.characterService.getAlldropDrownList(ele))
       );
       res = await Promise.allSettled(vehiclesResult);
-      const vehcles = res.map((ele) => ele.value);
-      this.vehicleList = [...vehcles, ...this.vehicleList];
+      const vehclesList = res.map((ele) => ele.value);
+      vehclesList.forEach(e => {
+        if (this.characterService.vehilcesMap.has(e.url)) {
+          this.characterService.vehilcesMap.set(e.url, e);
+        }
+      })
+      
+      this.vehicleList = [...vehclesList, ...this.vehicleList];
     } catch (err) {
       console.log(err);
     }
@@ -130,8 +148,15 @@ export class CharacterListComponent implements OnInit {
           await lastValueFrom(this.characterService.getAlldropDrownList(ele))
       );
       res = await Promise.allSettled(starShipsResult);
-      const starships = res.map((ele) => ele.value);
-      this.starShipsList = [...starships, ...this.starShipsList];
+      const starshipsList = res.map((ele) => ele.value);
+
+      starshipsList.forEach(e => {
+        if (this.characterService.starshipsMap.has(e.url)) {
+          this.characterService.starshipsMap.set(e.url, e);
+        }
+      })
+      
+      this.starShipsList = [...starshipsList, ...this.starShipsList];
     } catch (err) {
       console.log(err);
     }
@@ -143,20 +168,65 @@ export class CharacterListComponent implements OnInit {
     this.router.navigate(['character/' + characcterId]);
   }
 
+  getSpeicesNameList(species) {
+    if (species && species.length) {
+      const speciesValue = [];
+      species.forEach(ele => {
+        speciesValue.push(this.characterService.speciesMap.get(ele));
+      })
+      return speciesValue.map((ele) => ele?.value?.name).join(',');
+    }
+    else {
+      return null;
+    }
+  }
+
+
+
   setCharacterListData() {
     const characterList = this.characterResult.results;
     characterList.forEach(async (element) => {
       if (element.species && element.species?.length) {
-        element.species = await this.getSpiciesName(element.species);
+        const nonExistSpeciesInMap = [];
+        element.species.forEach(e => {
+          if (!this.characterService.speciesMap.has(e)) {
+            this.characterService.speciesMap.set(e, null);
+            nonExistSpeciesInMap.push(e);
+          }
+        })
+        await this.getSpiciesName(nonExistSpeciesInMap);
+        element.species = this.getSpeicesNameList(element.species);
       }
       if (element.films && element.films?.length) {
-        await this.getAllFilms(element.films);
+        const nonExistFilmsInMap = [];
+        element.films.forEach(e => {
+          if (!this.characterService.filmsMap.has(e)) {
+            this.characterService.filmsMap.set(e, null);
+            nonExistFilmsInMap.push(e);
+          }
+        })
+        await this.getAllFilms(nonExistFilmsInMap);
+
       }
       if (element.vehicles && element.vehicles?.length) {
-        await this.getAllVehicleList(element.vehicles);
+        const nonExistVehiclesInMap = [];
+        element.vehicles.forEach(e => {
+          if (!this.characterService.vehilcesMap.has(e)) {
+            this.characterService.vehilcesMap.set(e, null);
+            nonExistVehiclesInMap.push(e);
+          }
+        })
+        await this.getAllVehicleList(nonExistVehiclesInMap);
       }
       if (element.starships && element.starships?.length) {
-        await this.getAllStarShips(element.starships);
+        const nonExistStarShipsInMap = [];
+        element.starships.forEach(e => {
+          if (!this.characterService.starshipsMap.has(e)) {
+            this.characterService.starshipsMap.set(e, null);
+            nonExistStarShipsInMap.push(e);
+          }
+        })
+        await this.getAllStarShips(nonExistStarShipsInMap);
       }
     });
 
